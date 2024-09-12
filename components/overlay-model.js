@@ -1,6 +1,9 @@
 const template = document.createElement('template');
 template.innerHTML = /*html*/ `
     <style>
+        :host {
+            --color-light: inherit;
+        }
         .overlay {
             position: fixed;
             bottom: 0;

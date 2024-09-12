@@ -62,6 +62,11 @@ This custom web component allows you to create a `book-preview` element, display
 <script src="path/to/header-button.js" type="module"></script>
 ```
 
+## overlay-model
+```html
+<script src="path/to/overlay-model.js" type="module"></script>
+```
+
 ## Usage
 
 ### book-preview componenet
@@ -86,12 +91,28 @@ to create and use the header-button component.
 </header-button>
 ```
 
+### overlay-model component
+to create and use  the overlay-model component
+```html
+<overlay-model>
+   <span slot="body"></span>
+   <span slot="button-row"></span>/* optional*/
+</overlay-model>
+```
+
 ## Attributes
-data-preview (required): A unique identifier for the book. This attribute can be used to track or identify books.
 
 ### book-preview component
+
+data-preview (required): A unique identifier for the book. This attribute can be used to track or identify books.
 ```html
    <book-preview data-preview="12345"></book-preview>
+```
+
+### overlay-model component
+open="true" displays the overlay model and remove `open` to hide it
+```html
+<overlay-mode open="true"></overlay-mode>
 ```
 
 ## Slots
@@ -102,15 +123,17 @@ The `book-preview` component uses named slots to allow flexible content injectio
 - **title**: Displays the book's title.
 - **author**: Displays the author's name.
 
-When using book-preview, you will assign values to these slots in your HTML or JavaScript.
-
+When using book-preview, you will assign values to these slots in your HTML or JavaScript.*
 
 ### header-button component
 The `header-button` component takes one unnamed slot that will a svg as the icon
 
+## overlay-model component
+The `overlay-model` component uses named slots to allow flexible content injection. Below are the available slots:
+- `body`: the main slot for holding content
+- `button-row`: **optional** can hold a row ob buttons for the model window controls
 
 ## Example
-
 
 ### book-preview component
 Here is an example of how to use the book-preview component:
@@ -153,6 +176,19 @@ This will render the following HTML:
 </header-button>
 ```
 
+### overlay-model component
+
+```html
+<overlay-model open="true">/* true to display model*/
+   <div slot="body">
+      /*can hold content here*/
+   </div>
+   <div slot="button-row">
+      /* OPTIONAL: can hold buttons next */
+   </div>
+<overlay-model>
+```
+
 # Styling
 
 The `book-preview` component relies on a set of CSS custom properties for its colors. To ensure the component displays correctly, you must define these properties in your global `:root` scope. For example:
@@ -172,5 +208,12 @@ The `book-preview` component relies on a set of CSS custom properties for its co
 ```css
    :root {
       --color-force-light: <color>;
+   }
+```
+
+### overlay-model 
+```css
+   :root {
+      --color-light: <color>;
    }
 ```
