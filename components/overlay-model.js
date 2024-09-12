@@ -24,7 +24,7 @@ template.innerHTML = /*html*/ `
         }        
     </style>
     <dialog class="overlay">
-        <slot></slot>
+        <slot name="body"></slot>
 
         <slot name="button-row">
         </slot>
@@ -53,9 +53,7 @@ class OverlayModel extends HTMLElement {
         this.dialog = null;
     }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        console.log(name);
-        
+    attributeChangedCallback(name, oldValue, newValue) {        
         if (oldValue !== newValue) {
             this.updatedAttributes(); // Call the function when attribute changes
         }

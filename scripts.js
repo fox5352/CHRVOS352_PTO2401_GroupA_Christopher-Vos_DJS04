@@ -146,6 +146,9 @@ document.querySelector('[data-list-button]').innerHTML = `
 function closeWindowHandler(attachTag, modelTag) {
     document.querySelector(attachTag).addEventListener('click', () => {
         document.querySelector(modelTag).open = false;
+        if (modelTag === '[data-list-active]'){
+            document.querySelector(modelTag).removeAttribute("open")
+        }
     })
 }
 
@@ -246,6 +249,7 @@ document.querySelector('[data-list-button]').addEventListener('click', () => {
     page += 1
 })
 
+
 /**
  * Opens the book detail view when a book preview is clicked.
  * @param {Event} event - The click event triggered by the user.
@@ -271,6 +275,8 @@ document.querySelector('[data-list-items]').addEventListener('click', (event) =>
     
     if (active) {
         document.querySelector('[data-list-active]').open = true
+        document.querySelector('[data-list-active]').setAttribute("open", true)
+        
         document.querySelector('[data-list-blur]').src = active.image
         document.querySelector('[data-list-image]').src = active.image
         document.querySelector('[data-list-title]').innerText = active.title
