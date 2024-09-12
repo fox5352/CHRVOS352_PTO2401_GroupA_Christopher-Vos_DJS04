@@ -255,7 +255,7 @@ document.querySelector('[data-list-items]').addEventListener('click', (event) =>
     let active = null
 
     for (const node of pathArray) {
-        if (active) break
+        // if (active) break
 
         if (node?.dataset?.preview) {
             let result = null
