@@ -1,6 +1,16 @@
 const template = document.createElement('template');
 template.innerHTML = /*html*/ `
     <style>
+        :host {
+            -color-force-light: inherit;
+        }
+
+        .header__icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            fill: rgba(var(--color-force-light), 1);
+        }
+        
         .header__button {
             background-color: rgba(var(--color-force-light), 0.1);
             transition: background-color 0.1s;
@@ -22,7 +32,7 @@ template.innerHTML = /*html*/ `
 
     </style>
     <button class="header__button" data-header-search>
-        <slot></slot>
+        <div class="header__icon"><slot></slot></div>
     </button>
 `;
 

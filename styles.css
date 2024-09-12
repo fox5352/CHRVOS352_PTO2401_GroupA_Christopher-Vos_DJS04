@@ -91,11 +91,6 @@ option {
   }
 }
 
-.header__icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: rgba(var(--color-force-light), 1);
-}
 
 /* grid */
 

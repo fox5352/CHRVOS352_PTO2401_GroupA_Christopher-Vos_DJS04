@@ -53,13 +53,19 @@ This custom web component allows you to create a `book-preview` element, display
 
 1. Include the script for the custom element in your project. You can either download the script or load it through a `<script>` tag:
 
+### book-preview component
 ```html
 <script src="path/to/book-preview.js" type="module"></script>
 ```
+### header-button component
+```html
+<script src="path/to/header-button.js" type="module"></script>
+```
 
 ## Usage
-To create and use the book-preview component, follow these steps in your JavaScript code:
 
+### book-preview componenet
+To create and use the book-preview component, follow these steps in your JavaScript code:
 ```javascript
    const element = document.createElement('book-preview');
    element.setAttribute('data-preview', id);
@@ -71,26 +77,42 @@ To create and use the book-preview component, follow these steps in your JavaScr
 
    document.body.appendChild(element);
 ```
-This creates a custom book-preview element with a data-preview attribute for identifying the book.
+
+### header-button component
+to create and use the header-button component.
+```html
+<header-button>
+   <svg></svg>/*add a svg as an icon*/
+</header-button>
+```
 
 ## Attributes
 data-preview (required): A unique identifier for the book. This attribute can be used to track or identify books.
 
+### book-preview component
 ```html
    <book-preview data-preview="12345"></book-preview>
 ```
 
 ## Slots
-The book-preview component uses named slots to allow flexible content injection. Below are the available slots:
 
+### book-preview component
+The `book-preview` component uses named slots to allow flexible content injection. Below are the available slots:
 - **image**: Displays the book's cover image.
 - **title**: Displays the book's title.
 - **author**: Displays the author's name.
 
 When using book-preview, you will assign values to these slots in your HTML or JavaScript.
 
+
+### header-button component
+The `header-button` component takes one unnamed slot that will a svg as the icon
+
+
 ## Example
 
+
+### book-preview component
 Here is an example of how to use the book-preview component:
 
 ```javascript
@@ -120,10 +142,22 @@ This will render the following HTML:
 </book-preview>
 ```
 
+### header-button component
+```html
+<header-button>
+   <svg viewBox="0 96 960 960" xmlns="http://www.w3.org/2000/svg">
+      <path
+         d="M795 963 526 695q-29 22.923-68.459 35.962Q418.082 744 372 744q-115.162 0-195.081-80Q97 584 97 471t80-193q80-80 193.5-80t193 80Q643 358 643 471.15q0 44.85-12.5 83.35Q618 593 593 627l270 268-68 68ZM371.353 650q74.897 0 126.272-52.25T549 471q0-74.5-51.522-126.75T371.353 292q-75.436 0-127.895 52.25Q191 396.5 191 471t52.311 126.75Q295.623 650 371.353 650Z"
+      ></path>
+   </svg>
+</header-button>
+```
+
 # Styling
 
 The `book-preview` component relies on a set of CSS custom properties for its colors. To ensure the component displays correctly, you must define these properties in your global `:root` scope. For example:
 
+### book-preview component
 ```css
 :root {
   --color-blue: <color>;
@@ -132,4 +166,11 @@ The `book-preview` component relies on a set of CSS custom properties for its co
   --color-dark: <color>;
   --color-light: <color>;
 }
+```
 
+### header-button component
+```css
+   :root {
+      --color-force-light: <color>;
+   }
+```
