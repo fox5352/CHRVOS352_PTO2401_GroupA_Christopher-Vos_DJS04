@@ -9,9 +9,9 @@ The "Book Connect" project provides an opportunity for students to refine a full
 #### Goals
 
 - **Refactor Existing Code**: Analyse and refactor the given JavaScript and HTML code to improve its structure using objects and functions.
-- **Implement Abstraction**: Use abstraction to hide the complex reality while exposing only the necessary parts. This involves creating more generic functions that can perform tasks in a more flexible way.
+- **Implement web components**: Used web components as an abstraction to hide the complex reality while exposing only the necessary parts. This involves creating more generic functions that can perform tasks in a more flexible way.
 - **Documentation**: Write clear comments and documentation for the new code structure to explain the purpose and functionality of code blocks, functions, and objects.
-- **Follow Styleguides**: Adhere to established coding conventions and Styleguides to ensure code readability and maintainability.
+- **Follow Style guides**: Adhere to established coding conventions and Style guides to ensure code readability and maintainability.
 
 #### Tasks
 
@@ -37,3 +37,99 @@ After completing the tasks, prepare a brief presentation for your coaching group
 Submit the refactored version of the "Book Connect" application, including all HTML, CSS, and JavaScript files. Ensure that your code is well-documented and adheres to the specified Styleguides. Include a written report covering the discussion and reflection points outlined above.
 
 Make sure to submit your project to the LMS on the DJS03 Project Tab.
+
+
+This custom web component allows you to create a `book-preview` element, displaying a book's image, title, and author.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Attributes](#attributes)
+- [Slots](#slots)
+- [Example](#example)
+
+## Installation
+
+1. Include the script for the custom element in your project. You can either download the script or load it through a `<script>` tag:
+
+```html
+<script src="path/to/book-preview.js" type="module"></script>
+```
+
+## Usage
+To create and use the book-preview component, follow these steps in your JavaScript code:
+
+```javascript
+   const element = document.createElement('book-preview');
+   element.setAttribute('data-preview', id);
+   element.innerHTML = `
+      <span slot="image"><img class="preview__image" src="${image}"></span>
+      <span slot="title">${title}</span>
+      <span slot="author">${authors[author]}</span>
+   `;
+
+   document.body.appendChild(element);
+```
+This creates a custom book-preview element with a data-preview attribute for identifying the book.
+
+## Attributes
+data-preview (required): A unique identifier for the book. This attribute can be used to track or identify books.
+
+```html
+   <book-preview data-preview="12345"></book-preview>
+```
+
+## Slots
+The book-preview component uses named slots to allow flexible content injection. Below are the available slots:
+
+- **image**: Displays the book's cover image.
+- **title**: Displays the book's title.
+- **author**: Displays the author's name.
+
+When using book-preview, you will assign values to these slots in your HTML or JavaScript.
+
+## Example
+
+Here is an example of how to use the book-preview component:
+
+```javascript
+const bookId = '12345';
+const bookImage = 'path/to/book-image.jpg';
+const bookTitle = 'The Great Book';
+const bookAuthor = 'John Doe';
+
+const element = document.createElement('book-preview');
+element.setAttribute('data-preview', bookId);
+
+element.innerHTML = `
+    <span slot="image"><img class="preview__image" src="${bookImage}" alt="Book Cover"></span>
+    <span slot="title">${bookTitle}</span>
+    <span slot="author">${bookAuthor}</span>
+`;
+
+document.body.appendChild(element);
+```
+This will render the following HTML:
+
+```html
+<book-preview data-preview="12345">
+    <span slot="image"><img class="preview__image" src="path/to/book-image.jpg" alt="Book Cover"></span>
+    <span slot="title">The Great Book</span>
+    <span slot="author">John Doe</span>
+</book-preview>
+```
+
+# Styling
+
+The `book-preview` component relies on a set of CSS custom properties for its colors. To ensure the component displays correctly, you must define these properties in your global `:root` scope. For example:
+
+```css
+:root {
+  --color-blue: <color>;
+  --color-force-dark: <color>;
+  --color-force-light: <color>;
+  --color-dark: <color>;
+  --color-light: <color>;
+}
+
