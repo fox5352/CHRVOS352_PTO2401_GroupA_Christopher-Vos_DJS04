@@ -1,7 +1,7 @@
 import { books, authors, genres, BOOKS_PER_PAGE } from './data.js'
 import { BookPreview } from "./components/book-preview.js";
 
-/* CODE REPORT
+/* CODE REPORT DJS03:
     
     Function Segmentation: broke the code into multiple, small functions like populateCardWindow, populateSelectionMenu, setTheme,
 
@@ -17,6 +17,13 @@ import { BookPreview } from "./components/book-preview.js";
 
     Challenges Faced and How They Were Overcome:
         At first i didn't notice a pattern but after iv started playing with the code i found ways to Modularize it
+
+
+    CODE REPORT DJS04:
+
+    Challenges Faced and How They Were Overcome:
+        The main problem i had with implementing was syncing the styling with the theme changes, after fighting with it for a bit i saw that i should just use inherit
+        
  */
 
 let page = 1;
@@ -33,7 +40,6 @@ function populateCardWindow(data) {
     for (const { author, id, image, title } of data) {
         starting.appendChild(createBookPreView(author, id, image, title))
     }
-
 
     document.querySelector('[data-list-items]').appendChild(starting)
 }
