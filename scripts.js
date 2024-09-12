@@ -146,9 +146,7 @@ document.querySelector('[data-list-button]').innerHTML = `
 function closeWindowHandler(attachTag, modelTag) {
     document.querySelector(attachTag).addEventListener('click', () => {
         document.querySelector(modelTag).open = false;
-        if (modelTag === '[data-list-active]'){
-            document.querySelector(modelTag).removeAttribute("open")
-        }
+        document.querySelector(modelTag).removeAttribute("open")
     })
 }
 
@@ -160,7 +158,10 @@ function closeWindowHandler(attachTag, modelTag) {
  */
 function openWindowHandler(attachTag, modelTag, func = null) {
     document.querySelector(attachTag).addEventListener('click', (event) => {
+        
         document.querySelector(modelTag).open = true;
+        document.querySelector(modelTag).setAttribute("open", true);
+
         if (typeof func === 'function') {
             func(event);
         }
@@ -220,6 +221,7 @@ document.querySelector('[data-search-form]').addEventListener('submit', (event) 
 
     window.scrollTo({top: 0, behavior: 'smooth'});
     document.querySelector('[data-search-overlay]').open = false
+    document.querySelector('[data-search-overlay]').removeAttribute("open");
 })
 
 // Setting eventlistener
