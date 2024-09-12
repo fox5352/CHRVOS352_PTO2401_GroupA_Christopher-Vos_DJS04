@@ -237,6 +237,7 @@ document.querySelector('[data-settings-form]').addEventListener('submit', (event
     setTheme(theme);
     
     document.querySelector('[data-settings-overlay]').open = false
+    document.querySelector('[data-settings-overlay]').removeAttribute("open");
 })
 
 
