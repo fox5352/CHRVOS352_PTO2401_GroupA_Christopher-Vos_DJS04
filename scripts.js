@@ -1,4 +1,5 @@
 import { books, authors, genres, BOOKS_PER_PAGE } from './data.js'
+import { BookPreview } from "./components/book-preview.js";
 
 /* CODE REPORT
     
@@ -48,7 +49,29 @@ function populateCardWindow(data) {
     
         starting.appendChild(element)
     }
+
     document.querySelector('[data-list-items]').appendChild(starting)
+}
+
+/**
+ * 
+ * @param {string} authorId the id of the author
+ * @param {string} id the id of the book
+ * @param {string} image src of the image
+ * @param {string} title the title of the book
+ * @returns {BookPreview} returns a book-preview web component
+ */
+function createBookPreView(author, id, image, title) {
+    const element = document.createElement("book-preview");
+    element.setAttribute('data-preview', id);
+
+    element.innerHTML = /* html */ `
+        <span slot="image"><img class="preview__image" src="${image}"></span>
+        <span slot="title">${title}</span> 
+        <span slot="author">${authors[author]}</span>
+    `
+
+    return element;
 }
 
 /**
