@@ -1,6 +1,13 @@
 const template = document.createElement('template');
 template.innerHTML = /*html*/ `
     <style>
+        :host { 
+            --color-blue: inherit;
+            --color-force-dark: inherit;
+            --color-force-light: inherit;
+            --color-dark: inherit;
+            --color-light: inherit;
+        }
 
         .preview {
             border-width: 0;
@@ -13,7 +20,7 @@ template.innerHTML = /*html*/ `
             text-align: left;
             border-radius: 8px;
             border: 1px solid rgba(var(--color-dark), 0.15);
-            background:  var(--color-light);
+            background: rgba(var(--color-light), 1);
         }
 
         @media (min-width: 60rem) {
@@ -84,16 +91,7 @@ export class BookPreview extends HTMLElement {
     /**
      * the connectedCallback function is a lifecycle hook that run when the component is attached to the DOM
      */
-    connectedCallback() {
-        this.updateStyles();
-    }
-
-    /**
-     * gets the current :root property and maps them into the templated element
-     */
-    updateStyles() {
-        // TODO: implement 
-    }
+    connectedCallback() {}
 }
 
 window.customElements.define("book-preview", BookPreview)
